@@ -16,7 +16,7 @@ NextBus (pass agency to constructor or use setAgency)
 - predictions(routeTag, stopTag)
 
 MBTA
-- subways (hard coded with list of available lines)
+- subways() - hard coded with list of available lines
 - subway(line)
 
 
