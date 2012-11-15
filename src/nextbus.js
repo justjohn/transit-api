@@ -11,11 +11,21 @@ NextBus.prototype = new API({
 	base:     '/service/publicXMLFeed'
 });
 
+NextBus.prototype.setAgency = function(agency) {
+	this.agency = agency;
+}
+
 NextBus.prototype.command = function(command, params) {
 	params = params || {};
 	params.a = this.agency;
 	params.command = command;
 	return this.call(params);
+};
+
+NextBus.prototype.agencyList = function() {
+	return this.call({command: "agencyList"}).then(function(obj) {
+		return obj.body.agency;
+	});
 };
 
 NextBus.prototype.routeList = function() {
