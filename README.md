@@ -3,7 +3,8 @@ transit-api
 
 Node.js APIs for accessing transit services.
 
-The intent of these APIs is to convert the raw output of transit APIs into JavaScript objects.  It includes no intelligence about what the data should look like.
+The intent of these APIs is to convert the raw output of transit APIs into JavaScript objects.  
+It includes little intelligence about what the data should look like.
 
 ## Included APIs
 
