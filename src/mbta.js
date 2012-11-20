@@ -12,8 +12,21 @@ MBTA.prototype = new API({
 	format:   API.FORMAT.JSON
 });
 
-MBTA.prototype.predictions = function() {
-	return this.call('RT_Archive/RealTimeHeavyRailKeys.csv', API.FORMAT.CSV_HEADER);
+MBTA.prototype.predictions = function(forLine) {
+	return this.call('RT_Archive/RealTimeHeavyRailKeys.csv', API.FORMAT.CSV_HEADER).then(function(predictions) {
+            var prediction, i, line, predictionByLine = {};
+            for (i=0;i<predictions.length;i++) {
+                prediction = predictions[i];
+                line = prediction["Line"];
+                if (!predictionByLine[line])
+                    predictionByLine[line] = [];
+                predictionByLine[line].push(prediction);
+            }
+            if (forLine === undefined)
+                return predictionByLine;
+            else
+                return predictionByLine[forLine];
+        });
 };
 
 MBTA.prototype.subways = function() {
