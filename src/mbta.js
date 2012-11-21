@@ -12,7 +12,7 @@ MBTA.prototype = new API({
 	format:   API.FORMAT.JSON
 });
 
-MBTA.prototype.predictions = function(forLine) {
+MBTA.prototype.subways = function(forLine) {
 	return this.call('RT_Archive/RealTimeHeavyRailKeys.csv', API.FORMAT.CSV_HEADER).then(function(predictions) {
             var prediction, i, line, predictionByLine = {};
             for (i=0;i<predictions.length;i++) {
@@ -29,13 +29,13 @@ MBTA.prototype.predictions = function(forLine) {
         });
 };
 
-MBTA.prototype.subways = function() {
+MBTA.prototype.lines = function() {
 	var deferred = Q.defer();
 	deferred.resolve([MBTA.REDLINE, MBTA.ORANGELINE, MBTA.BLUELINE])
 	return deferred.promise;
 }
 
-MBTA.prototype.subway = function(line) {
+MBTA.prototype.predictions = function(line) {
 	return this.call('Data/'+line+'.json');
 };
 
