@@ -20,6 +20,11 @@ API.FORMAT = {
 	CSV_HEADER: 'csv_header'
 };
 
+function is(type, obj) {
+    var clas = Object.prototype.toString.call(obj).slice(8, -1);
+    return obj !== undefined && obj !== null && clas === type;
+}
+
 API.prototype.call = function(path, params, format) {
 	var deferred = Q.defer();
 
@@ -34,10 +39,18 @@ API.prototype.call = function(path, params, format) {
 		params = undefined;
 	}
 
-	var paramStr = [];
+	var paramStr = [],
+		value;
 
-	if (params) for (var key in params)
-		paramStr.push(key + "=" + params[key]);
+	if (params) for (var key in params) if (params.hasOwnProperty(key)) {
+		value = params[key];
+		if (is("Array", value)) {
+			for (var i=0;i<value.length;i++)
+				paramStr.push(key + "=" + value[i]);
+		} else {
+			paramStr.push(key + "=" + value);
+		}
+	}
 
 	var query = (paramStr.length>0?"?":"") + paramStr.join("&");
 

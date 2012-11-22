@@ -53,4 +53,29 @@ NextBus.prototype.predictions = function(routeTag, stopTag) {
 	});
 };
 
+
+// Format of stop pairs:
+// {routeTag: [StopTag, StopTag, ...], routeTag: [...], ...}
+//
+NextBus.prototype.predictionsForMultiStops = function(stopPairs) {
+	var route, stops, stop, i,
+		params = {
+			stops: []
+		};
+
+	for (route in stopPairs) if (stopPairs.hasOwnProperty(route)) {
+		stops = stopPairs[route];
+		for (i=0;i<stops.length;i++) {
+			params.stops.push(route+"|"+stops[i]);
+		}
+	}
+
+	console.log(params);
+
+
+	return this.command("predictionsForMultiStops", params).then(function(obj) {
+		return obj.body.predictions;
+	});
+};
+
 exports.NextBus = NextBus;
