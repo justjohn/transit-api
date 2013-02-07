@@ -1,5 +1,5 @@
 var Q = require('q'),
-	API = require('./api').API;
+	API = require('common-api').API;
 
 var NextBus = function(agency) {
 	this.agency = agency;
