@@ -31,7 +31,20 @@ MBTA.prototype.subways = function(forLine) {
 
 MBTA.prototype.lines = function() {
 	var deferred = Q.defer();
-	deferred.resolve([MBTA.REDLINE, MBTA.ORANGELINE, MBTA.BLUELINE])
+	deferred.resolve([
+        {
+            tag: MBTA.REDLINE,
+            title: 'Red Line'
+        },
+        {
+            tag: MBTA.ORANGELINE,
+            title: 'Orange Line'
+        },
+        {
+            tag: MBTA.BLUELINE,
+            title: 'Blue line'
+        }
+    ])
 	return deferred.promise;
 }
 

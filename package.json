@@ -2,7 +2,7 @@
   "author": "John Roepke <john@justjohn.us> (http://john.sh/)",
   "name": "transit-api",
   "description": "Low level API abstractions for transit services.",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "homepage": "https://github.com/justjohn/transit-api",
   "licenses": [
     { "type": "BSD-2-Clause",
