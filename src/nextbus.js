@@ -78,4 +78,15 @@ NextBus.prototype.predictionsForMultiStops = function(stopPairs) {
 	});
 };
 
+NextBus.prototype.vehicleLocations = function(routeTag) {
+	var params = {
+		r: routeTag ? routeTag : '',
+		t: 0
+	}
+
+	return this.command("vehicleLocations", params).then(function(obj) {
+		return obj.body;
+	});
+}
+
 exports.NextBus = NextBus;
