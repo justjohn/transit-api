@@ -14,6 +14,10 @@ NextBus (pass agency to constructor or use setAgency)
 - routeConfig(routeTag)
 - predictions(stopId)
 - predictions(routeTag, stopTag)
+- predictionsForMultiStops(stopParis)
+- schedule(routeTag)
+- messages(routeTags)
+- vehicleLocations(routeTag)
 
 MBTA
 - subways() - hard coded with list of available lines
