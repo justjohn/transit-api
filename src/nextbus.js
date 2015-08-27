@@ -70,7 +70,7 @@ NextBus.prototype.predictionsForMultiStops = function(stopPairs) {
 		}
 	}
 
-	console.log(params);
+	//console.log(params);
 
 
 	return this.command("predictionsForMultiStops", params).then(function(obj) {
