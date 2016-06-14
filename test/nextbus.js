@@ -2,7 +2,7 @@ var chai = require('chai'),
   expect = chai.expect,
   should = chai.should(),
   nextbus = require('../transit').NextBus,
-  api = new nextbus('portland-sc')
+  api = new nextbus('portland-sc');
 
 describe('nextbus api calls', function() {
 
@@ -33,7 +33,7 @@ describe('nextbus api calls', function() {
   });
 
   it('predictions', function() {
-    return api.predictions('193', '10755').then(function(data) {
+    return api.predictions('193', '10767').then(function(data) {
       //console.log(data);
       should.exist(data);
       data.should.have.property('agencyTitle');
@@ -46,7 +46,7 @@ describe('nextbus api calls', function() {
   });
 
   it('predictionsForMultiStops', function() {
-    return api.predictionsForMultiStops({"193":['10755']}).then(function(data) {
+    return api.predictionsForMultiStops({"193":['10767']}).then(function(data) {
       //console.log(data);
       should.exist(data);
       data.should.have.property('agencyTitle');
