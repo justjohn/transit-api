@@ -35,7 +35,11 @@ NextBus.prototype.routeList = function() {
 };
 
 NextBus.prototype.routeConfig = function(routeTag) {
-	return this.command("routeConfig", {r: routeTag}).then(function(obj) {
+	var params = {}
+	if(routeTag) {
+		params.r = routeTag;
+	}
+	return this.command("routeConfig", params).then(function(obj) {
 		return obj.body.route;
 	});
 };
