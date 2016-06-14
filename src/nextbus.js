@@ -35,7 +35,11 @@ NextBus.prototype.routeList = function() {
 };
 
 NextBus.prototype.routeConfig = function(routeTag) {
-	return this.command("routeConfig", {r: routeTag}).then(function(obj) {
+	var params = {}
+	if(routeTag) {
+		params.r = routeTag;
+	}
+	return this.command("routeConfig", params).then(function(obj) {
 		return obj.body.route;
 	});
 };
@@ -70,12 +74,48 @@ NextBus.prototype.predictionsForMultiStops = function(stopPairs) {
 		}
 	}
 
-	console.log(params);
+	//console.log(params);
 
 
 	return this.command("predictionsForMultiStops", params).then(function(obj) {
 		return obj.body.predictions;
 	});
 };
+
+NextBus.prototype.schedule = function(routeTag) {
+	var params = {
+		r: routeTag ? routeTag : '',
+		t: 0
+	}
+
+	return this.command("schedule", params).then(function(obj) {
+		return obj.body;
+	});
+}
+
+NextBus.prototype.messages = function(routeTags) {
+	var params = {
+		t: 0
+	}
+
+	if(routeTags) {
+		params.r = routeTags;
+	}
+
+	return this.command("messages", params).then(function(obj) {
+		return obj.body;
+	});
+}
+
+NextBus.prototype.vehicleLocations = function(routeTag) {
+	var params = {
+		r: routeTag ? routeTag : '',
+		t: 0
+	}
+
+	return this.command("vehicleLocations", params).then(function(obj) {
+		return obj.body;
+	});
+}
 
 exports.NextBus = NextBus;

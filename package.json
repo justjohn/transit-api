@@ -5,12 +5,14 @@
   "version": "0.2.0",
   "homepage": "https://github.com/justjohn/transit-api",
   "licenses": [
-    { "type": "BSD-2-Clause",
-      "url":  "https://raw.github.com/justjohn/transit-api/master/LICENSE" }
+    {
+      "type": "BSD-2-Clause",
+      "url": "https://raw.github.com/justjohn/transit-api/master/LICENSE"
+    }
   ],
   "repository": {
     "type": "git",
-    "url":  "git://github.com/justjohn/transit-api.git"
+    "url": "git://github.com/justjohn/transit-api.git"
   },
   "dependencies": {
     "q": "0.8.x",
@@ -18,8 +20,14 @@
     "csv": "0.2.x",
     "common-api": "0.0.x"
   },
+  "scripts": {
+    "test-nextbus": "mocha test/nextbus.js"
+  },
   "main": "transit.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
+  },
   "optionalDependencies": {},
   "engines": {
     "node": "*"
